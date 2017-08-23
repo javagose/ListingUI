@@ -1,0 +1,137 @@
+<p-growl [value]="msgs" sticky="sticky"></p-growl>
+<div class="ui-container">    
+    <form [formGroup]="colonneform" (ngSubmit)="onSubmit(colonneform.value)">
+        <p-panel header="Ajouter Colonne">
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                <p-fieldset legend="general" [toggleable]="true"  [style]="{'width':'100%'}">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">
+                            <div class="ui-grid-row form-row">
+                                <div class="ui-grid-col-3 form-label">
+                                    Nom *:
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <input pInputText class="ui-inputtext" pTooltip="entrer le nom du colonne"  
+                                    tooltipPosition="top" formControlName="name" placeholder="Required"/>
+
+                                    <div class="ui-message ui-messages-error" 
+                                    *ngIf="!colonneform.controls['name'].valid&&colonneform.controls['name'].dirty">
+                                        <i class="fa fa-close"></i>
+                                        Nom du colonne est obligatoire
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ui-grid-row form-row">
+                                <div class="ui-grid-col-3 form-label">
+                                    display name :
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <input pInputText class="ui-inputtext" pTooltip="entrer le nom à afficher"  
+                                    tooltipPosition="top" formControlName="displayName" placeholder="dislay name"/>
+                                </div>
+                            </div>
+
+                            <div class="ui-grid-row form-row">
+                                <div class="ui-grid-col-3 form-label" >
+                                    Type :
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <input pInputText class="ui-inputtext" formControlName="type" pTooltip="entrer le type du colonne"  
+                                    tooltipPosition="top" placeholder="type"/>
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ui-grid-col-6">
+                            <div class="ui-grid-row form-row"> 
+                                <div class="ui-grid-col-3 form-label">
+                                        depend :
+                                </div>
+                                    <div class="ui-grid-col-9">
+                                        <input pInputText  class="ui-inputtext" formControlName="depend" placeholder="Required"/>
+                                </div>
+                            </div>
+
+                            <div class="ui-grid-row form-row">
+                                <div class="ui-grid-col-3 form-label">
+                                    ordre :
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <input pInputText type="number" class="ui-inputtext" pTooltip="order du cell dans le tableau "  
+                                    tooltipPosition="top" formControlName="ordre" placeholder="Required"/>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>  
+                </p-fieldset>
+                
+                <br>
+                
+                <p-fieldset legend="Filring" [toggleable]="true" [style]="{'width':'100%'}">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">
+                            <div class="ui-grid-row from-row">
+                                <div class="ui-grid-col-3 form-label">
+                                    Filter type :
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <input pInputText type="number" class="ui-inputtext" pTooltip="le type du filter "  
+                                    tooltipPosition="top" formControlName="filterType" placeholder="Required"/>
+                                </div>
+                            </div>
+                            
+                            <div class="ui-grid-row form-row" style="margin-top:8%">
+                                <div class="ui-grid-col-4 form-label">
+                                    Internal Filtering:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="internalFilter"></p-inputSwitch>
+                                </div>
+                            
+                                <div class="ui-grid-col-4 form-label">
+                                    dynamique option:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="dynamicOption" ></p-inputSwitch>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <div class="ui-grid-row from-row">
+                                <div class="ui-grid-col-3 form-label">
+                                    Select option:
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <textarea pInputTextarea  class="ui-inputtextarea" formControlName="selectOption" placeholder="SelectOption"></textarea>
+                                </div>
+                            </div>
+                            
+                            <!--<div *ngIf="dynamicOption==true">-->
+                            <div class="ui-grid-row from-row">
+                                <div class="ui-grid-col-3 form-label">
+                                    Data option:
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <textarea pInputTextarea  class="ui-inputtextarea" formControlName="dataOption" placeholder="dataOption"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </p-fieldset>
+                
+                <br><br>  
+
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-2"></div>
+                    <div class="ui-grid-col-8">
+                        <button pButton typeColonne="submit" label="Submit" [disabled]="!colonneform.valid"></button>
+                    </div>
+                    <div class="ui-grid-col-2"></div>
+                </div>
+            </div>   
+        </p-panel> 
+    </form>
+</div> 

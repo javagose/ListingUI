@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+.form-label{
+    padding-right:2%;
+    text-align: right;
+    vertical-align: middle;
+}
+.form-row{
+    margin-top:3.5%; 
+}
+.ui-grid-row{
+    margin-bottom: 2%;
+}
+.ui-container{
+    padding-left: 10%;
+    padding-right: 10%;
+}

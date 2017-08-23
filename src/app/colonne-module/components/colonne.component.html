@@ -1,0 +1,116 @@
+
+<!--dataTable -->
+<p-dataTable  [value]="colonnes" reorderableColumns="true" resizableColumns="true" [responsive]="true"
+            [scrollable]="true" [scrollWidth]="windowWidth" dataKey="datakey" (onEditComplete)="handleChange($event)"
+            [paginator]="true" rows="10" [responsive]="true" [editable]="true" (onRowDblclick)="showEditModal($event)"
+            (onContextMenuSelect) ="onRowSelect($event)"  [contextMenu]="cm">
+            
+    <p-column field="name" header="name"  [style]="{'width':'150px'}"  [editable]="true" ></p-column>
+    <p-column field="displayName" header="displayName"  [style]="{'width':'150px'}"  [editable]="true" ></p-column>
+    <p-column field="ordre" header="ordre"  [style]="{'width':'50px'}"  [editable]="true" ></p-column>
+    <p-column field="type" header="type" [style]="{'width':'100px'}"  [editable]="true" ></p-column>
+
+    <p-column field="visible" header="visible" [style]="{'width':'100px'}"  >
+        <ng-template let-col let-colonne="rowData" pTemplate="editor" pTemplate="body">
+            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne[col.field]"(onChange)="handleChange($event, colonne , col.field)"></p-inputSwitch>
+        </ng-template>   
+    </p-column>
+
+    <p-column field="cellTooltip" header="Tooltip" [style]="{'width':'100px'}" styleClass="col-button">
+        <ng-template let-col let-colonne="rowData" pTemplate="body">
+            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne[col.field]" (onChange)="handleChange($event, colonne , col.field)"></p-inputSwitch>
+        </ng-template>   
+    </p-column>
+
+    <p-column field="filterType" header="filterType" [style]="{'width':'100px'}"  [editable]="true" ></p-column>
+
+    <p-column field="enableFiltering" header="Filtering" [style]="{'width':'100px'}" >
+        <ng-template let-col let-colonne="rowData" pTemplate="body">
+            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne[col.field]" (onChange)="handleChange($event, colonne, col.field )"></p-inputSwitch>
+        </ng-template>   
+    </p-column>
+
+    <p-column field="enableLimitFiltering" header="Limit Filtering"  [style]="{'width':'100px'}" >
+        <ng-template let-col let-colonne="rowData" pTemplate="body">
+            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne[col.field]"(onChange)="handleChange($event, colonne, col.field )"></p-inputSwitch>
+        </ng-template>   
+    </p-column>
+
+    <p-column field="selectOption" header="select option" [style]="{'width':'150px'}"  [editable]="true" ></p-column>
+
+    <p-column field="dynamicOption" header="dynamic option"  [style]="{'width':'100px'}" >
+        <ng-template let-col let-colonne="rowData" pTemplate="body">
+            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne[col.field]"(onChange)="handleChange($event, colonne, col.field )"></p-inputSwitch>
+        </ng-template>   
+    </p-column>
+
+    <p-column field="dataOption" header="data option" [style]="{'width':'150px'}"  [editable]="true" ></p-column>
+
+    <p-column field="enableSorting" header="Sorting"  [style]="{'width':'100px'}" >
+        <ng-template let-col let-colonne="rowData" pTemplate="body">
+            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne[col.field]"(onChange)="handleChange($event, colonne, col.field )"></p-inputSwitch>
+        </ng-template>   
+    </p-column>
+
+    <p-column field="sortDirection" header="sort Direction" [style]="{'width':'80px'}"  [editable]="true" ></p-column>
+
+    <p-column field="sortPriority" header="sort priority" [style]="{'width':'80px'}"  [editable]="true" ></p-column>
+
+    <p-column field="suppressRemoveSort" header="Remove Sort"  [style]="{'width':'100px'}" >
+        <ng-template let-col let-colonne="rowData" pTemplate="body">
+            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne[col.field]"(onChange)="handleChange($event, colonne, col.field )"></p-inputSwitch>
+        </ng-template>   
+    </p-column>
+
+    <p-column field="expresserSuppressexport" header="Supp export"  [style]="{'width':'100px'}" >
+        <ng-template let-col let-colonne="rowData" pTemplate="body">
+            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne[col.field]"(onChange)="handleChange($event, colonne, col.field )"></p-inputSwitch>
+        </ng-template>   
+    </p-column>
+
+    <p-column field="grouping" header="grouping" [style]="{'width':'80px'}"  [editable]="true" ></p-column>
+
+    <p-column field="aggregationType" header="aggregation" [style]="{'width':'100px'}"  [editable]="true" ></p-column>
+
+    <p-column field="pinnedRight" header="pin right"  [style]="{'width':'100px'}" >
+        <ng-template let-col let-colonne="rowData" pTemplate="body">
+            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne[col.field]"(onChange)="handleChange($event, colonne, col.field )"></p-inputSwitch>
+        </ng-template>   
+    </p-column>
+
+    <p-column field="pinnedleft" header="pin left"  [style]="{'width':'100px'}" >
+        <ng-template let-col let-colonne="rowData" pTemplate="body">
+            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne[col.field]"(onChange)="handleChange($event, colonne, col.field )"></p-inputSwitch>
+        </ng-template>   
+    </p-column>
+    
+    <p-column field="headerCellClass" header="head class" [style]="{'width':'100px'}"  [editable]="true" ></p-column>
+    <p-column field="headerCellTemplate" header="header template" [style]="{'width':'200px'}"  [editable]="true" ></p-column>
+
+    <p-column field="cellFilter" header="cell filter" [style]="{'width':'100px'}"  [editable]="true" ></p-column>
+    <p-column field="cellClass" header="cell class" [style]="{'width':'100px'}"  [editable]="true" ></p-column>
+    <p-column field="cellTemplate" header="footer template" [style]="{'width':'200px'}"  [editable]="true" ></p-column>
+
+    <p-column field="footerCellFilter" header="footer filter" [style]="{'width':'100px'}"  [editable]="true" ></p-column>
+    <p-column field="footerCellClass" header="footer class" [style]="{'width':'100px'}"  [editable]="true" ></p-column>
+    <p-column field="footerCellTemplate" header="footer template" [style]="{'width':'200px'}"  [editable]="true" ></p-column>
+
+    <p-column field="width" header="width" [style]="{'width':'100px'}"  [editable]="true" ></p-column> 
+    <p-column field="depend" header="depend" [style]="{'width':'100px'}"  [editable]="true" ></p-column>
+
+    <p-column styleClass="col-button" [style]="{'width':'120px'}">
+        <ng-template pTemplate="header">
+            Action
+        </ng-template>
+        <ng-template let-colonne="rowData" let-index="rowIndex" pTemplate="body">
+            <button type="button" pButton (click)="deleteColonne(colonne,index)" class="ui-button-danger" icon="fa-trash" label="Delete"></button>
+        </ng-template>
+    </p-column>
+</p-dataTable>
+
+<!--feedBack colonne-->
+<p-growl [(value)]="msgs"></p-growl>
+
+<p-contextMenu #cm [model]="items"></p-contextMenu>
+
+<edit-modal [colonne]="selectedColonne" [displayModal]="diplayEditModal" (hideModal)="hideEditModal($event)"></edit-modal>

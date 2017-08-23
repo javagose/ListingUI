@@ -1,0 +1,205 @@
+
+<p-growl [value]="msgs" sticky="sticky"></p-growl>
+<div class="ui-container">
+        <p-panel>
+            <p-header>
+                <button pButton type="button" [style]="{'float':'right'}" (click)="editing = !editing" icon="fa-pencil" label="edit"></button> 
+                <button type="text" (click)="display = true" pButton icon="fa-external-link-square" label="modifier requête"></button> 
+            </p-header>
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                <p-fieldset legend="general" [toggleable]="true" [style]="{'width':'100%'}">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">
+                            <div class="ui-grid-row form-row">
+                                <div class="ui-grid-col-3 form-label">
+                                    Nom :
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <span *ngIf="!editing"> {{rapport.nom}}</span>
+                                    <input pInputText class="ui-inputtext" [(ngModel)]="rapport.nom" *ngIf="editing"/>
+
+                                </div>
+                            </div>
+                            
+                            <div class="ui-grid-row form-row"> 
+                                <div class="ui-grid-col-3 form-label">
+                                    Description:
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <span *ngIf="!editing"> {{rapport.description}}</span>
+                                    <textarea pInputTextarea  class="ui-inputtextarea" [(ngModel)]="rapport.description" *ngIf="editing"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ui-grid-col-6">
+                            <div class="ui-grid-row form-row">
+                                <div class="ui-grid-col-3 form-label">
+                                    Type *:
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <span *ngIf="!editing"> {{rapport.typeRapport}}</span>
+                                    <input pInputText class="ui-inputtext" [(ngModel)]="rapport.typeRapport" *ngIf="editing"/>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    
+                </p-fieldset>
+                <br>
+
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-6">
+                        <p-fieldset legend="Vue option" [toggleable]="true" [style]="{'width':'100%'}">
+                            <br>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">
+                                    Enable Filtring:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="rapport.enableFiltring"></p-inputSwitch>
+                                </div>
+
+                                <div class="ui-grid-col-4">
+                                    Enable Limit Filtring:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="rapport.enableLimitFiltring"></p-inputSwitch>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">
+                                    sorting:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="rapport.sorting"></p-inputSwitch>
+                                </div>
+
+                                <div class="ui-grid-col-4">
+                                    Pagination:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="rapport.pagination"></p-inputSwitch>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="ui-grid-row">
+
+                                <div class="ui-grid-col-4">
+                                    enableGridMenu:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="rapport.enableGridMenu"></p-inputSwitch>
+                                </div>
+                                
+                                <div class="ui-grid-col-4">
+                                    enableGrouping:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="rapport.enableGrouping"></p-inputSwitch>
+                                </div>
+
+                            </div>
+
+                        </p-fieldset>
+                    </div>
+                    <div class="ui-grid-col-6">
+                        <p-fieldset legend="Export option" [toggleable]="true" [style]="{'width':'100%'}">
+                            <br>
+                            <div class="ui-grid-row">
+
+                                <div class="ui-grid-col-4">
+                                    exporterMenuXls:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="rapport.exporterMenuXls"></p-inputSwitch>
+                                </div>
+
+                                <div class="ui-grid-col-4">
+                                    exporterMenuPdf:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="rapport.exporterMenuPdf"></p-inputSwitch>
+                                </div>
+
+                            </div>
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">
+                                    exporterMenuCsv:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="rapport.exporterMenuCsv"></p-inputSwitch>
+                                </div>
+                                
+                                <div class="ui-grid-col-4">
+                                    exporterMenuAllData:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="rapport.exporterMenuAllData"></p-inputSwitch>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">
+                                    exporterMenuVisisbleData:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="rapport.exporterMenuVisisbleData"></p-inputSwitch>
+                                </div>
+
+                            </div>
+                               
+
+                        </p-fieldset>
+                    </div>
+                </div>
+
+                <div class="ui-grid-row" *ngIf="editing">
+                    <div class="ui-grid-col-3"></div>
+                    <div class="ui-grid-col-9">
+                        <button pButton type="submit" label="Submit" (click)="editRapport()" ></button>
+                    </div>
+                    <div class="ui-grid-col-3"></div>
+                </div>
+                
+            </div>   
+        </p-panel> 
+</div>
+
+<!-- edit requete dialog -->
+
+
+<p-dialog [(visible)]="display" [resizable]="true" width="550" minWidth="550" minHeight="400">
+    <p-header>
+        Modifier requête
+    </p-header>
+        <div class="ui-grid-row form-row"> 
+            <div class="ui-grid-col-3 form-label">
+                Requête:
+            </div>
+            <div class="ui-grid-col-9">
+                <textarea pInputTextarea  class="ui-inputtextarea" [(ngModel)]="rapport.requete"></textarea>
+            </div>                    
+        </div>
+        <br>
+        <div class="ui-grid-row form-row"> 
+            <div class="ui-grid-col-2" form-label>
+                <span class="first">Action :</span>
+            </div>
+            <div class="ui-grid-col-4"><p-radioButton name="group1" label="aucune action" value="aucuneAction" [(ngModel)]="updateAction"></p-radioButton></div>
+            <div class="ui-grid-col-3"><p-radioButton name="group1" label="actualisation" value="actualisation" [(ngModel)]="updateAction"></p-radioButton></div>
+            <div class="ui-grid-col-3"><p-radioButton name="group1" label="regineration" value="regineration" [(ngModel)]="updateAction"></p-radioButton></div>
+        </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="display=false" label="Cancel"></button>
+            <button type="button" pButton icon="fa-check" (click)="updateRequete()" label="Update"></button>
+        </div>
+    </p-footer>
+</p-dialog>

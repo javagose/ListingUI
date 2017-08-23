@@ -1,0 +1,287 @@
+<p-dialog header="edit Colonne" [(visible)]="displayModal" [responsive]="true" (onHide)="onHide($event)"
+[width]="850" showEffect="fade" [modal]="true" [contentStyle]="{'overflow':'auto','max-height':'400px'}">
+    <p-header>Edit Colonne</p-header>
+    <div class="ui-grid ui-grid-responsive ui-fluid">
+    <!--Filtring fieldset-->
+        <p-fieldset legend="general" [toggleable]="true"  [style]="{'width':'100%'}">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-6">
+                    <div class="ui-grid-row form-row">
+                        <div class="ui-grid-col-3 form-label">
+                            Nom *:
+                        </div>
+                        <div class="ui-grid-col-9">
+                            <input pInputText class="ui-inputtext" [(ngModel)]="colonne.name" />
+                        </div>
+                    </div>
+
+                    <div class="ui-grid-row form-row">
+                        <div class="ui-grid-col-3 form-label">
+                            display name :
+                        </div>
+                        <div class="ui-grid-col-9">
+                            <input pInputText class="ui-inputtext" pTooltip="entrer le nom à afficher"  
+                            tooltipPosition="top" [(ngModel)]="colonne.displayName" placeholder="dislay name"/>
+                        </div>
+                    </div>
+
+                    <div class="ui-grid-row form-row">
+                        <div class="ui-grid-col-3 form-label" >
+                            Type :
+                        </div>
+                        <div class="ui-grid-col-9">
+                            <input pInputText class="ui-inputtext" [(ngModel)]="colonne.type"/>
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-grid-col-6">
+                    <div class="ui-grid-row form-row"> 
+                        <div class="ui-grid-col-3 form-label">
+                                depend :
+                        </div>
+                            <div class="ui-grid-col-9">
+                                <input pInputText  class="ui-inputtext" [(ngModel)]="colonne.depend"/>
+                        </div>
+                    </div>
+
+                    <div class="ui-grid-row form-row">
+                        <div class="ui-grid-col-3 form-label">
+                            ordre :
+                        </div>
+                        <div class="ui-grid-col-9">
+                            <input pInputText type="number" class="ui-inputtext" [(ngModel)]="colonne.ordre"/>
+                        </div>
+                    </div>
+
+                    <div class="ui-grid-row form-row">
+                        <div class="ui-grid-col-3 form-label">
+                            width :
+                        </div>
+                        <div class="ui-grid-col-9">
+                            <input pInputText type="number" class="ui-inputtext" [(ngModel)]="colonne.width"/>
+                        </div>
+                    </div>
+                </div>    
+            </div>  
+        </p-fieldset>
+        <br>
+        <!--Filtring fieldset-->
+        <p-fieldset legend="Filring" [toggleable]="true" [style]="{'width':'100%'}">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-6">
+                    <div class="ui-grid-row from-row">
+                        <div class="ui-grid-col-3 form-label">
+                            Filter type :
+                        </div>
+                        <div class="ui-grid-col-9">
+                            <input pInputText type="number" class="ui-inputtext" [(ngModel)]="colonne.filterType"/>
+                        </div>
+                    </div>
+                    
+                    <div class="ui-grid-row form-row" style="margin-top:8%">
+                        <div class="ui-grid-col-4 form-label">
+                            Internal Filtering:
+                        </div>
+                        <div class="ui-grid-col-2">
+                            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne.internalFilter"></p-inputSwitch>
+                        </div>
+                    
+                        <div class="ui-grid-col-4 form-label">
+                            dynamique option:
+                        </div>
+                        <div class="ui-grid-col-2">
+                            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne.dynamicOption" ></p-inputSwitch>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-grid-col-6">
+                    <div class="ui-grid-row from-row">
+                        <div class="ui-grid-col-3 form-label">
+                            Select option:
+                        </div>
+                        <div class="ui-grid-col-9">
+                            <textarea pInputTextarea  class="ui-inputtextarea" [(ngModel)]="colonne.selectOption"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!--<div *ngIf="dynamicOption==true">-->
+                    <div class="ui-grid-row from-row">
+                        <div class="ui-grid-col-3 form-label">
+                            Data option:
+                        </div>
+                        <div class="ui-grid-col-9">
+                            <textarea pInputTextarea  class="ui-inputtextarea" [(ngModel)]="colonne.dataOption" ></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </p-fieldset>
+        <br>
+        <!--colonne-->
+        <p-fieldset legend="Colonne" [toggleable]="true" [style]="{'width':'100%'}" *ngIf="!colonne.internalFilter">
+            <div class="ui-grid-row">
+                    <div class="ui-grid-col-4 form-label">
+                        Cell Tooltip:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne.cellTooltip"></p-inputSwitch>
+                    </div>
+
+                    <div class="ui-grid-col-4 form-label">
+                        Enable Filtering:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne.enableFiltering"></p-inputSwitch>
+                    </div>
+
+                    <div class="ui-grid-col-4 form-label">
+                        Enable Limit Filtering:
+                    </div>
+                    <div class="ui-grid-col-2">
+                        <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne.enableLimitFiltering"></p-inputSwitch>
+                  </div>
+            </div>
+            
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4 form-label">
+                    Cell Tooltip:
+                </div>
+                <div class="ui-grid-col-2">
+                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne.cellTooltip"></p-inputSwitch>
+                </div>
+
+                <div class="ui-grid-col-4 form-label">
+                    Sort Direction:
+                </div>
+                <div class="ui-grid-col-2">
+                    <input pInputText class="ui-inputtext" [(ngModel)]="colonne.sortDirection" />
+                </div>
+
+                <div class="ui-grid-col-4 form-label">
+                    Sort Priority:
+                </div>
+                <div class="ui-grid-col-2">
+                    <input pInputText type="number" class="ui-inputtext" [(ngModel)]="colonne.sortPriority" />
+                </div>
+            </div>
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4 form-label">
+                    Suppress Remove Sort:
+                </div>
+                <div class="ui-grid-col-2">
+                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne.suppressRemoveSort"></p-inputSwitch>
+                </div>
+
+                <div class="ui-grid-col-4 form-label">
+                    expresserSuppressexport:
+                </div>
+                <div class="ui-grid-col-2">
+                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne.expresserSuppressexport"></p-inputSwitch>
+                </div>
+
+                <div class="ui-grid-col-2 form-label">
+                    grouping
+                </div>
+                <div class="ui-grid-col-4">
+                    <input pInputText type="number" class="ui-inputtext" [(ngModel)]="colonne.grouping" />
+                </div>
+            </div>
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4 form-label">
+                    Pinned Right:
+                </div>
+                <div class="ui-grid-col-2">
+                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne.pinnedRight"></p-inputSwitch>
+                </div>
+
+                <div class="ui-grid-col-4 form-label">
+                    Pinned Left:
+                </div>
+                <div class="ui-grid-col-2">
+                    <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne.pinnedLeft"></p-inputSwitch>
+                </div>
+
+                <div class="ui-grid-col-4 form-label">
+                    Aggregation Type:
+                </div>
+                <div class="ui-grid-col-2">
+                    <input pInputText type="number" class="ui-inputtext" [(ngModel)]="colonne.aggregationType" />
+                </div>
+            </div>
+        </p-fieldset>
+        <br>
+        <!--templating-->
+        <p-fieldset legend="Templating" [toggleable]="true"  [style]="{'width':'100%'}" *ngIf="!colonne.internalFilter">
+            <!--class-->
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2 form-label">
+                    Header Class
+                </div> 
+                <div class="ui-grid-col-4">
+                    <input pInputText class="ui-inputtext" [(ngModel)]="colonne.headerCellClass">
+                </div>
+                <div class="ui-grid-col-2 form-label">
+                    Cell Class
+                </div> 
+                <div class="ui-grid-col-4">
+                    <input pInputText class="ui-inputtext" [(ngModel)]="colonne.cellClass">
+                </div>
+                <div class="ui-grid-col-2 form-label">
+                    Footer Class
+                </div> 
+                <div class="ui-grid-col-4">
+                    <input pInputText class="ui-inputtext" [(ngModel)]="colonne.footerCellClass">
+                </div>
+            </div>
+            <!--filter-->
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2 form-label">
+                    Cell Filter
+                </div> 
+                <div class="ui-grid-col-4">
+                    <input pInputText class="ui-inputtext" [(ngModel)]="colonne.cellFilter">
+                </div>
+                <div class="ui-grid-col-2 form-label">
+                    Footer Filter
+                </div> 
+                <div class="ui-grid-col-4">
+                    <input pInputText class="ui-inputtext" [(ngModel)]="colonne.footerCellFilter">
+                </div>
+                <div class="ui-grid-col-6"></div>
+            </div>
+            <!--template-->
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2 form-label">
+                    headerCellTemplate
+                </div>
+                <div class="ui-grid-col-4">
+                    <textarea pInputTextarea  class="ui-inputtextarea" [(ngModel)]="colonne.headerCellTemplate" ></textarea>
+                </div>
+
+                <div class="ui-grid-col-2 form-label">
+                    CellTemplate
+                </div>
+                <div class="ui-grid-col-4">
+                     <textarea pInputTextarea  class="ui-inputtextarea" [(ngModel)]="colonne.CellTemplate" ></textarea>
+                </div>
+
+                <div class="ui-grid-col-2 form-label">
+                    footerCellTemplate
+                </div>
+                <div class="ui-grid-col-4">
+                    <textarea pInputTextarea  class="ui-inputtextarea" [(ngModel)]="colonne.footerCellTemplate" ></textarea>
+                </div>
+            </div>
+        </p-fieldset>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"> </button>
+        </div>
+    </p-footer>
+</p-dialog>

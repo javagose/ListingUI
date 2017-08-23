@@ -1,0 +1,23 @@
+<h1>rapport Details</h1><hr>
+<a pButton icon="fa-external-link-square" label="rapports index" routerLink="/" routerLinkActive="active"></a>
+<hr>
+
+
+<p-tabView >
+  
+    <p-tabPanel header="Details" leftIcon="fa-bell-o">
+        <details-rapport [rapport]="rapport"></details-rapport>    
+    </p-tabPanel>
+    <p-tabPanel header="Colonnes" leftIcon="fa-bell-o">
+       <colonne [idRapport]="idRapport"></colonne>
+    </p-tabPanel>
+    <p-tabPanel header="Internal Colonne" leftIcon="fa-bell-o">
+        <internal-colonne [idRapport]="idRapport"></internal-colonne>
+    </p-tabPanel>
+    <p-tabPanel header="add Internal colonne" leftIcon="fa-bell-o">
+        <add-internal-colonne [rapport]="rapport"></add-internal-colonne>
+    </p-tabPanel>
+</p-tabView>
+
+<!--delete Confirmation-->
+<p-confirmDialog width="425"></p-confirmDialog>

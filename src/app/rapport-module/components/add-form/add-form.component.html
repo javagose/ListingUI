@@ -1,0 +1,188 @@
+<p-growl [value]="msgs" sticky="sticky"></p-growl>
+<div class="ui-container">  
+    <form [formGroup]="rapportform" (ngSubmit)="onSubmit(rapportform.value)">
+        <p-panel header="Ajouter Rapport">
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                <p-fieldset legend="general" [toggleable]="true" [style]="{'width':'100%'}">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">
+                            <div class="ui-grid-row form-row">
+                                <div class="ui-grid-col-3 form-label">
+                                    Nom *:
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <input pInputText class="ui-inputtext" pTooltip="entrer le nom du rapport"  
+                                    tooltipPosition="top" formControlName="nom" placeholder="nam !Required"/>
+
+                                    <div class="ui-message ui-messages-error" 
+                                    *ngIf="!rapportform.controls['nom'].valid&&rapportform.controls['nom'].dirty">
+                                        <i class="fa fa-close"></i>
+                                        Nom du rapport est obligatoire
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="ui-grid-row form-row"> 
+                                <div class="ui-grid-col-3 form-label">
+                                    Description:
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <textarea pInputTextarea  class="ui-inputtextarea" formControlName="description" placeholder="Description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ui-grid-col-6">
+                            <div class="ui-grid-row form-row">
+                                <div class="ui-grid-col-3 form-label">
+                                    Type *:
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <input pInputText class="ui-inputtext" formControlName="typeRapport" pTooltip="entrer le type du rapport"  
+                                    tooltipPosition="top" placeholder="type !Required"/>
+                                
+                                    <div class="ui-message ui-messages-error" 
+                                    *ngIf="!rapportform.controls['typeRapport'].valid&&rapportform.controls['typeRapport'].dirty">
+                                        <i class="fa fa-close"></i>
+                                        Type du rapport est obligatoire
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="ui-grid-row form-row"> 
+                                <div class="ui-grid-col-3 form-label">
+                                    Requête:
+                                </div>
+                                <div class="ui-grid-col-9">
+                                    <textarea pInputTextarea  class="ui-inputtextarea" formControlName="requete" placeholder="requete"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </p-fieldset>
+                <br>
+
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-6">
+                        <p-fieldset legend="Vue option" [toggleable]="true" [style]="{'width':'100%'}">
+                            <br>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">
+                                    Enable Filtring:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="enableFiltring"></p-inputSwitch>
+                                </div>
+
+                                <div class="ui-grid-col-4">
+                                    Enable Limit Filtring:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="enableLimitFiltring"></p-inputSwitch>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">
+                                    sorting:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="sorting"></p-inputSwitch>
+                                </div>
+
+                                <div class="ui-grid-col-4">
+                                    Pagination:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="pagination"></p-inputSwitch>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="ui-grid-row">
+
+                                <div class="ui-grid-col-4">
+                                    enableGridMenu:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="enableGridMenu"></p-inputSwitch>
+                                </div>
+                                
+                                <div class="ui-grid-col-4">
+                                    enableGrouping:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="enableGrouping"></p-inputSwitch>
+                                </div>
+
+                            </div>
+
+                        </p-fieldset>
+                    </div>
+                    <div class="ui-grid-col-6">
+                        <p-fieldset legend="Export option" [toggleable]="true" [style]="{'width':'100%'}">
+                            <br>
+                            <div class="ui-grid-row">
+
+                                <div class="ui-grid-col-4">
+                                    exporterMenuXls:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="exporterMenuXls"></p-inputSwitch>
+                                </div>
+
+                                <div class="ui-grid-col-4">
+                                    exporterMenuPdf:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="exporterMenuPdf"></p-inputSwitch>
+                                </div>
+
+                            </div>
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">
+                                    exporterMenuCsv:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="exporterMenuCsv"></p-inputSwitch>
+                                </div>
+                                
+                                <div class="ui-grid-col-4">
+                                    exporterMenuAllData:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="exporterMenuAllData"></p-inputSwitch>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">
+                                    exporterMenuVisisbleData:
+                                </div>
+                                <div class="ui-grid-col-2">
+                                    <p-inputSwitch onLabel="Oui" offLabel="Non" formControlName="exporterMenuVisisbleData"></p-inputSwitch>
+                                </div>
+
+                            </div>
+                               
+
+                        </p-fieldset>
+                    </div>
+                </div>
+
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-3"></div>
+                    <div class="ui-grid-col-9">
+                        <button pButton typeRapport="submit" label="Submit" [disabled]="!rapportform.valid"></button>
+                    </div>
+                    <div class="ui-grid-col-3"></div>
+                </div>
+                
+            </div>   
+        </p-panel> 
+    </form>
+</div>

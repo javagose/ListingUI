@@ -1,0 +1,74 @@
+<!--dataTable -->
+<p-dataTable  [value]="data" [reorderableColumns]="parametres.reorderableColumns" [resizableColumns]="parametres.resizableColumns"
+             [responsive]="parametres.responsive" [scrollable]="parametres.scrollable" [scrollWidth]="parametres.windowWidth" 
+             dataKey="datakey" (onEditComplete)="handleChange($event)"[paginator]="parametres.paginator" 
+             [rows]="parametres.rows" [editable]="parametres.editable" (onContextMenuSelect) ="onRowSelect($event)" [contextMenu]="cm">
+   
+  <!--  <p-header>
+        <div class="ui-helper-clearfix" style="width:100%">
+            <button type="button" pButton class="ui-button-success" icon="fa-plus" style="float:left" (click)="showDialog()" label="Add Message"></button>
+        </div>
+    </p-header>-->
+    
+    <p-column *ngFor="let column of keys" [field]="column.field" 
+    [header]="column.header" [editable]="true" [style]="{'width':column.width}" [filter]="parametres.filtrable">
+
+        <ng-template
+            *ngIf="column.type === 'string' || column.type === undefined"
+            let-col let-data="rowData" pTemplate="body" >
+            <span class="col-string">{{ data[ col.field ] }}</span>
+        </ng-template>
+
+        <ng-template
+            *ngIf="column.type === 'number'"
+            let-col let-data="rowData" pTemplate="body">
+            <span class="col-string">{{ data[ col.field ] }} </span>
+        </ng-template>
+
+            <ng-template *ngIf="column.type === 'boolean'" let-col let-data="rowData" pTemplate="editor" pTemplate="body">
+                <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="data[col.field]"(onChange)="handleChange($event, colonne , col.field)"></p-inputSwitch>
+            </ng-template>   
+    </p-column>
+
+    <!--<p-column
+    *ngFor="let thisColumn of ( keys.userPreferencesChanged$ | async )?.defaults.dataColumns;
+            trackBy: trackByColumnKey; let columnIndex=index"
+    field="{{ thisColumn.field }}" header="{{ thisColumn.header }}">
+
+        <ng-template
+        *ngIf="thisColumn.type === 'string' || thisColumn.type === undefined"
+        let-col let-data="rowData" pTemplate="body">
+        <span class="col-string">{{ data[ col.field ] }}</span>
+        </ng-template>
+
+    </p-column>-->
+    
+    
+    <!--<p-column field="switch" header="switch" [style]="{'width':'auto'}" >
+        <ng-template let-col let-colonne="rowData" pTemplate="editor" pTemplate="body">
+            <p-inputSwitch onLabel="Oui" offLabel="Non" [(ngModel)]="colonne[col.field]"(onChange)="handleChange($event, colonne , col.field)"></p-inputSwitch>
+        </ng-template>   
+    </p-column>-->
+
+    <p-column styleClass="col-button" header="" [style]="{'width':'auto'}">
+        <ng-template let-item="rowData" let-index="rowIndex" pTemplate="body">
+            <button type="button" pButton (click)="showDialog(item,index)" class="ui-button-info" icon="fa-edit" label="edit"></button>
+            <button type="button" pButton (click)="removeItem(item,index)" class="ui-button-danger" icon="fa-trash" label="Delete"></button>
+        </ng-template>
+    </p-column>
+    <p-footerColumnGroup>
+        <p-row>
+            <p-column footer="footer" ></p-column>
+            <p-column footer="aggregation"></p-column>
+            <p-column footer="function"></p-column>
+        </p-row>
+    </p-footerColumnGroup>
+</p-dataTable>
+
+
+<!--delete Confirmation-->
+<p-confirmDialog width="425"></p-confirmDialog>
+<!--feedBack message-->
+<p-growl [(value)]="msgs"></p-growl>
+
+<p-contextMenu #cm [model]="items"></p-contextMenu>
