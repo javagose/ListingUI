@@ -1,9 +1,10 @@
 # Listing UI
 
-Is a data analysis and interpretation tool.  It gives access to all data collected via[PrimeNG](https://github.com/primefaces/primeng)  dataTables and offers several filtering and viewing options.
-Angular [v 4.0.0] + PrimeNG + RxJS + CSS3 + HTML5.
+Is a data analysis and interpretation tool.  It gives access to all data collected using angular 4.0.0 and [PrimeNG](https://github.com/primefaces/primeng) dataTables and offers several filtering and viewing options.
+
 develop Backend using JEE standars. and documented via Swagger (we cannot share because is a part of a big project).
 Manipulate UI events and API responses, on the Web with [RxJS](https://github.com/ReactiveX/rxjs).
+
 Implemente Ui Component using third party libraries PrimeNG.
 
 ## Install Dependecies
@@ -17,7 +18,8 @@ After Clonnig and installing dependencies, project should look like this:
 node_modules/
 src/
  app/
-    colonne-module/
+
+    **colonne-module/**
         components/
             add-forms/
                 add-forms.component.html
@@ -36,7 +38,8 @@ src/
         index.component.html
         index.component.ts
         rapport.module.ts
-    rapports-module/
+
+    **rapports-module/**
         components/
             add-forms/
                 add-forms.component.html
@@ -46,11 +49,13 @@ src/
         index.component.html
         index.component.ts
         rapport.module.ts
-    service/
+
+    **service/**
         generic.service.ts
         colonne.service.ts
         rapports.service.ts
-    shared/
+
+    **shared/**
         components/
             shared-table.component.html
             shared-table.component.ts
@@ -60,8 +65,9 @@ src/
             rapports.ts
             table-params.ts
         services/
-            shared.service.ts //logical service
+            shared.service.ts 
         shared.module.ts
+
     app.component.css
     app.component.html
     app.component.js
