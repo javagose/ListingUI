@@ -51,14 +51,14 @@ src/
         rapport.module.ts
 
     **service/**
-        generic.service.ts
+        [generic.service.ts](./src/app/service/generic.service.ts)
         colonne.service.ts
         rapports.service.ts
 
     **shared/**
         components/
             shared-table.component.html
-            shared-table.component.ts
+            [shared-table.component.ts]((./src/app/shared/shared-table.component.ts]))
         models/
             colonne.ts
             internal-colonne.ts
